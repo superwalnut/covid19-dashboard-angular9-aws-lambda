@@ -1,0 +1,47 @@
+<!-- Header start ==================== -->
+<div class="container">
+	<nav class="navbar navbar-fixed-top  navigation " id="top-nav">
+		<a class="navbar-brand" href="#">
+			<img src="assets/images/logo.png" alt="">
+		</a>
+
+		<ul class="navbar navbar-expand-lg navbar-light float-lg-right" id="top-nav">
+			<li class="nav-item active">
+				<a class="nav-link" href="#">HOME</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#daily">DAILY</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#countries">COUNTRIES</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#overall">OVERALL</a>
+			</li>
+		</ul>
+	</nav>
+</div>
+
+<app-overall-summary></app-overall-summary>
+
+<app-daily-increase></app-daily-increase>
+
+<app-countries-summary></app-countries-summary>
+
+<app-mailing-list></app-mailing-list>
+
+<app-overall-timeline></app-overall-timeline>
+
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="block">
+					<p>Copyright &copy; <a href="http://www.mrkevin.wang">MrKevin.Wang</a>| All right reserved.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<router-outlet></router-outlet>

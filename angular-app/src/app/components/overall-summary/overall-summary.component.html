@@ -1,0 +1,71 @@
+<section class="hero-area bg-1">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <div class="block">
+          <h1
+            class="wow fadeInDown"
+            data-wow-delay="0.3s"
+            data-wow-duration=".2s"
+          >
+            COVID-19 Global Updates
+          </h1>
+          <p
+            class="wow fadeInDown"
+            data-wow-delay="0.5s"
+            data-wow-duration=".5s"
+          >
+            Coronavirus (COVID-19) is a respiratory illness caused by a new
+            virus. Symptoms range from a mild cough to pneumonia. Some people
+            recover easily, others may get very sick very quickly.
+          </p>
+          <div
+            class="wow fadeInDown"
+            data-wow-delay="0.7s"
+            data-wow-duration=".7s"
+          >
+            <a class="btn btn-home" href="#daily" role="button"
+              >View Statistics</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5 wow zoomIn">
+        <div class="block">
+          <div class="counter text-center">
+            <ul id="countdown_dashboard">
+              <li>
+                <div class="dash days_dash">
+                  <div class="digit">{{ latest?.confirmedIncr | number:'3.0-0' }}</div>
+                  <div class="digit up-arrow">&#8593;</div>
+                  <span class="dash_title">Today</span>
+                </div>
+              </li>
+              <li>
+                <div class="dash hours_dash">
+                  <div class="digit">{{ latest?.confirmedCount | number:'3.0-0' }}</div>
+                  <span class="dash_title">Confirmed</span>
+                </div>
+              </li>
+              <li>
+                <div class="dash minutes_dash">
+                  <div class="digit">{{ latest?.curedCount | number:'3.0-0' }}</div>
+                  <span class="dash_title">Recovered</span>
+                </div>
+              </li>
+              <li>
+                <div class="dash seconds_dash">
+                  <div class="digit">{{ latest?.deadCount | number:'3.0-0' }}</div>
+                  <span class="dash_title">Died</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- .row close -->
+  </div>
+  <!-- .container close -->
+</section>
+<!-- header close -->

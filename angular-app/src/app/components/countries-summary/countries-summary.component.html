@@ -1,0 +1,26 @@
+<!-- Countries start ==================== -->
+<section id="countries" class="service section">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-sm-8 wow">
+                <div class="heading wow fadeInUp">
+                    <h2>Percentages of confirmed cases</h2>
+                    <p>The chart demostrate percentages of countries/territories around the world</p>
+                    <hr>
+                    <canvas id="countries-summary-pie-chart" width="700" height="400"></canvas>
+                </div>
+            </div>
+            <div class="col-sm-4 wow" data-wow-delay="0.3s">
+                <div class="block" *ngFor="let i of top3Countries;">
+                    <i class="tf-circle-compass"></i>
+                    <h3>{{ i.countryEnglishName }}</h3>
+                    <p>There are {{ i.counter?.confirmedCount | number:'3.0-0' }} confirmed cases, <br>
+                        {{ i.counter?.curedCount | number:'3.0-0' }} of them are recovered & <br>
+                        {{ i.counter?.deadCount | number:'3.0-0' }} are sadly passed away.</p>
+                </div>
+            </div>
+            
+        </div>
+    </div><!-- .container close -->
+</section>
