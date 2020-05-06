@@ -36,6 +36,8 @@ ng add @ng-bootstrap/ng-bootstrap
 # install chartjs
 npm i --save chart.js
 
+npm i --save @types/chart.js
+
 ```
 
 Part 2 - Configure serverless and deploy to aws 
