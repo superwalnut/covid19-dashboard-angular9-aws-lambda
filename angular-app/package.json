@@ -7,7 +7,17 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build:browser:prod": "ng build --prod",
+    "build:browser:serverless": "ng build --prod --base-href /production/",
+    "build:serverless": "npm run build:browser:serverless && npm run build:server:serverless",
+    "build:prod": "npm run build:browser:prod && npm run build:server:prod",
+    "server": "node local.js",
+    "build:prod:deploy": "npm run build:prod && npm run deploy",
+    "build:serverless:deploy": "npm run build:serverless && npm run deploy",
+    "deploy": "serverless deploy",
+    "build:server:prod": "webpack --config webpack.server.config.js --progress --colors",
+    "build:server:serverless": "webpack --config webpack.server.config.js --progress --colors"
   },
   "private": true,
   "dependencies": {
@@ -21,8 +31,11 @@
     "@angular/platform-browser-dynamic": "~9.1.3",
     "@angular/router": "~9.1.3",
     "@ng-bootstrap/ng-bootstrap": "^6.1.0",
+    "@ng-toolkit/serverless": "^8.1.0",
+    "@ng-toolkit/universal": "^1.1.21",
     "bootstrap": "^4.4.0",
     "chart.js": "^2.9.3",
+    "cors": "^2.8.5",
     "node-sass": "^4.14.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
@@ -47,6 +60,11 @@
     "protractor": "~5.4.3",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~3.8.3"
+    "typescript": "~3.8.3",
+    "ts-loader": "^6.2.1",
+    "webpack-cli": "^3.3.10",
+    "opencollective": "^1.0.3",
+    "serverless": "^1.60.0",
+    "serverless-apigw-binary": "^0.4.4"
   }
 }

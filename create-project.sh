@@ -11,11 +11,8 @@ npm i --save node-sass
 # add bootstrap
 ng add @ng-bootstrap/ng-bootstrap
 
-npm i --save popper.js
-
 # install chartjs
 npm i --save chart.js
-npm i --save ng2-charts
 
 # generate components
 ng g c components/daily-increase
@@ -25,5 +22,7 @@ ng g c components/countries-summary
 ng g c components/overall-timeline
 
 ng g c components/overall-summary
+
+ng g c components/mailing-list
 
 ng g service services/covid

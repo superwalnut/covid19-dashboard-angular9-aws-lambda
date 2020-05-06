@@ -18,7 +18,7 @@ export class OverallTimelineComponent implements AfterViewInit {
   constructor(private covidService: CovidService) {}
 
   ngAfterViewInit(): void {
-    this.covidService.loadOverall().subscribe((x) => {
+    this.covidService.getOverall().subscribe((x) => {
       var items = x.filter((i) => i.confirmedCount > 0);
       var sorted = items.sort((a, b) => a.dateId - b.dateId);
       var confirmedCounts = sorted.map((x) => x.confirmedCount);
@@ -31,56 +31,54 @@ export class OverallTimelineComponent implements AfterViewInit {
       this.days = dates.length;
       this.deaths = deadCounts[deadCounts.length - 1];
       this.confirmed = confirmedCounts[confirmedCounts.length - 1];
-
     });
   }
 
   private buildChart(labels, data1, data2, data3) {
-      this.canvas = document.getElementById('overall-timeline-chart');
-      this.ctx = this.canvas.getContext('2d');
-      let myChart = new Chart(this.ctx, {
-        type: 'line',
-        data: {
-          labels: labels,
-          datasets: [
+    this.canvas = document.getElementById('overall-timeline-chart');
+    this.ctx = this.canvas.getContext('2d');
+    let myChart = new Chart(this.ctx, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: 'confirmed',
+            data: data1,
+            borderColor: '#fb6a4a',
+            fill: false,
+          },
+          {
+            label: 'recovered',
+            data: data2,
+            borderColor: '#41ab5d',
+            fill: false,
+          },
+          {
+            label: 'deaths',
+            data: data3,
+            borderColor: '#737373',
+            fill: false,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        scales: {
+          gridLines: {
+            display: false,
+          },
+          yAxes: [
             {
-              label: 'confirmed',
-              data: data1,
-              borderColor: '#fb6a4a',
-              fill: false,
-            },
-            {
-              label: 'recovered',
-              data: data2,
-              borderColor: '#41ab5d',
-              fill: false,
-            },
-            {
-              label: 'deaths',
-              data: data3,
-              borderColor: '#737373',
-              fill: false,
+              ticks: {
+                suggestedMin: 0,
+                suggestedMax: 3000000,
+                stepSize: 200000,
+              },
             },
           ],
         },
-        options: {
-          responsive: true,
-          scales: {
-            gridLines: {
-              display: false,
-            },
-            yAxes: [
-              {
-                ticks: {
-                  suggestedMin: 0,
-                  suggestedMax: 3000000,
-                  stepSize: 200000,
-                },
-              },
-            ],
-          },
-        },
-      });
+      },
+    });
   }
-
 }

@@ -12,16 +12,13 @@ export class OverallSummaryComponent implements OnInit {
   constructor(private covidService: CovidService) { }
 
   ngOnInit(): void {
-    this.covidService.loadOverall().subscribe(x=>{
+    this.covidService.getOverall().subscribe(x=>{
       var items = x.filter(i => i.confirmedCount >0);
       var sorted = items.sort((a, b) => b.dateId - a.dateId);
       if(sorted!= null && sorted.length >0)
       {
         this.latest = sorted[0];
       }
-
-      console.log(this.latest);
     });
   }
-
 }

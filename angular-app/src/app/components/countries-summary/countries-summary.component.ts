@@ -28,7 +28,7 @@ export class CountriesSummaryComponent implements AfterViewInit {
   constructor(private covidService:CovidService) { }
 
   ngAfterViewInit(): void {
-    this.covidService.loadLatest().subscribe((x) => {
+    this.covidService.getLatest().subscribe((x) => {
       var sorted = x.sort(
         (a, b) => b.counter.confirmedIncr - a.counter.confirmedIncr
       );
