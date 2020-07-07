@@ -86,19 +86,19 @@ Part 3 - Configure dns and domain
 
 //aws acm certificate-validated --certificate-arn arn:aws:acm:us-west-2:294202928772:certificate/ee9db60b-ea57-42a8-b5ef-37fc9eb2add8
 
-CERTIFICATE_ARN="$(aws acm request-certificate --domain-name *.asin.pro --validation-method DNS --idempotency-token 91adc45q | jq -r '.CertificateArn')"
+CERTIFICATE_ARN="$(aws acm request-certificate --domain-name asin.pro --validation-method DNS --subject-alternative-names *.asin.pro | jq -r '.CertificateArn')" 
 
-VALIDATION_CNAME="$(aws acm describe-certificate --certificate-arn $CERTIFICATE_ARN | jq -r '.Certificate.DomainValidationOptions[].ResourceRecord.Name')"
+VALIDATION_CNAME="$(aws acm describe-certificate --certificate-arn $CERTIFICATE_ARN | jq -r '.Certificate.DomainValidationOptions[0].ResourceRecord.Name')"  
 
-VALIDATION_VALUE="$(aws acm describe-certificate --certificate-arn $CERTIFICATE_ARN | jq -r '.Certificate.DomainValidationOptions[].ResourceRecord.Value')"
+VALIDATION_VALUE="$(aws acm describe-certificate --certificate-arn $CERTIFICATE_ARN | jq -r '.Certificate.DomainValidationOptions[0].ResourceRecord.Value')" 
 
 echo create a CNAME entry at your DNS provider - CNAME: $VALIDATION_CNAME with VALUE : $VALIDATION_VALUE
 
-aws apigateway create-domain-name --domain-name 'www.asin.pro' --endpoint-configuration "{ \"types\": [\"REGIONAL\"] }" --regional-certificate-arn $CERTIFICATE_ARN
+aws apigateway create-domain-name --domain-name 'asin.pro' --endpoint-configuration "{ \"types\": [\"REGIONAL\"] }" --regional-certificate-arn $CERTIFICATE_ARN
 
-aws apigateway get-rest-api --rest-api-id <API_KEY_ID>
+aws apigateway get-rest-api --rest-api-id z20smy4uaj <API_GATEWAY_ID> 
 
-aws apigateway create-base-path-mapping --domain-name 'www.asin.pro' --base-path '(none)' --stage 'production' --rest-api-id z20smy4uaj
+aws apigateway create-base-path-mapping --domain-name 'asin.pro' --base-path '(none)' --stage 'production' --rest-api-id z20smy4uaj
 
 ```
 
