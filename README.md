@@ -1,3 +1,5 @@
+Full article read https://medium.com/@mrkevin.wang/create-a-covid-19-dashboard-with-angular-9-serverless-aws-lambda-a40b4b096bd5
+
 ## This is a real-world serverless angular project deployed with aws lamdba for free
 
 I have created a COVID-19 dashboard using Angular 9 and demostrate how to deploy it to AWS Lambda using serverless.
