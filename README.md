@@ -96,6 +96,10 @@ VALIDATION_VALUE="$(aws acm describe-certificate --certificate-arn $CERTIFICATE_
 
 echo create a CNAME entry at your DNS provider - CNAME: $VALIDATION_CNAME with VALUE : $VALIDATION_VALUE
 
+# validate
+aws acm certificate-validated --certificate-arn $CERTIFICATE_ARN
+
+
 aws apigateway create-domain-name --domain-name 'asin.pro' --endpoint-configuration "{ \"types\": [\"REGIONAL\"] }" --regional-certificate-arn $CERTIFICATE_ARN
 
 aws apigateway get-rest-api --rest-api-id z20smy4uaj <API_GATEWAY_ID> 
